@@ -1,40 +1,53 @@
-# Assignment 1 - ReactJS app.
+# Assignment 2 - Web API.
 
 Name: Dominik Martynski
 
-## Overview.
+## Features.
 
-This repository contains an extended version of the movies app created in the labs. 
-I have added a latest, watchlist and trending pages along with parametized endpoints
-for each with their own seperate details.
-
-### Features.
+A bullet-point list of the ADDITIONAL features you have implemented in the API **THAT WERE NOT IN THE LABS** (or modifications to existing features)
  
-+ All lab work complete e.g. production countries showing up, adding to watchlist working.
-+ Watchlater page created, displaying movies in the same way favorites did.
-+ Actors added to moviesinfo.
-+ Got recommended movies working.
-+ Alternative titles for each movie displaying.
-+ A new UI element list and listitems was used on movieDetails.
-+ A new page displaying most popular movies.
-+ Added pagination for every single page in the project, updated api calls.
-
+ + Feature 1 
+ + Feature 2 
+ + Feature 3 
+ + etc
 
 ## Setup requirements.
 
-run npm install @mui/lab for pagination, no other imports necessary from what I remember.
+[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
 
+## API Configuration
 
-## API endpoints.
+Describe any configuration that needs to take place before running the API. For example, creating an `.env` file and what variables to put in it. Give an example of how this might be done.
 
-+ Movie recommendations - /movie/:id/recommendations
-+ Upcoming movies - /movie/watchlaterpage
-+ Alternative titles - /movie/:id/alternative_titles
-+ Popular movies - /movie/popular
+REMEMBER: DON'T PUT YOUR OWN USERNAMES/PASSWORDS/AUTH KEYS IN THE README OR ON GITHUB, just placeholders as indicated below:
 
-## Routing.
+______________________
+NODEENV=development
+PORT=8080
+HOST=
+mongoDB=YourMongoURL
+seedDb=true
+secret=YourJWTSecret
+______________________
 
-+ Movie recommendations - /movies/:id/recommendations
-+ Upcoming movies - /movies/watchlaterpage
-+ Recommended movies - /movies/:id/recommended
-+ Popular movies - /movies/popular
+## API Design
+Give an overview of your web API design, perhaps similar to the following: 
+
+- /api/movies | GET | Gets a list of movies 
+- /api/movies/{movieid} | GET | Gets a single movie 
+- /api/movies/{movieid}/reviews | GET | Get all reviews for movie 
+- /api/movies/{movieid}/reviews | POST | Create a new review for Movie 
+
+If you have your API design on an online platform or graphic, please link to it (e.g. [Swaggerhub](https://app.swaggerhub.com/)).
+
+## Security and Authentication
+
+Give details of authentication/security implemented on the API (e.g. passport/sessions). Indicate which routes are protected.
+
+## Integrating with React App
+
+Describe how you integrated your React app with the API. List the views that use your Web API instead of the TMDB API. Describe any other updates to the React app from Assignment One.
+
+## Independent learning (if relevant)
+
+Briefly explain any non-standard features developed for the app.   
