@@ -1,11 +1,43 @@
 import React, { useState } from "react";
+import { login, signup } from "../api/movies-api";
 
 export const MoviesContext = React.createContext(null);
 
 const MoviesContextProvider = (props) => {
+  const existingToken = localStorage.getItem("token");
   const [favorites, setFavorites] = useState([]);
   const [watchlist, setWatchlist] = useState([]);
   const [myReviews, setMyReviews] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(!!existingToken);
+  const [authToken, setAuthToken] = useState(existingToken);
+  const [userName, setUserName] = useState("");
+
+   //Function to put JWT token in local storage.
+   const setToken = (data) => {
+    localStorage.setItem("token", data);
+    setAuthToken(data);
+  }
+
+  const authenticate = async (username, password) => {
+    const result = await login(username, password);
+    if (result.token) {
+      setToken(result.token);
+      setIsAuthenticated(true);
+      setUserName(username);
+    }
+  };
+
+  const register = async (username, password) => {
+    const result = await signup(username, password);
+    console.log(result.code);
+    return (result.code == 201) ? true : false;
+  };
+
+  const signout = () => {
+    localStorage.removeItem("token");
+    setAuthToken(null);
+    setIsAuthenticated(false);
+  };
 
   const addToFavorites = (movie) => {
     let newFavorites = [];
@@ -50,6 +82,11 @@ const MoviesContextProvider = (props) => {
         removeFromWatchlist,
         watchlist,
         addReview,
+        isAuthenticated,
+        authenticate,
+        register,
+        signout,
+        userName
       }}
     >
       {props.children}

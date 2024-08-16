@@ -15,7 +15,8 @@ import WatchLaterPage from "./pages/watchLaterPage";
 import MovieRecommendations from "./components/movieRecommendations";
 import Popular from "./pages/popular";
 import Alltime from "./pages/alltime";
-
+import LoginPage from "./pages/loginPage";
+import Register from "./pages/signUpPage";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -43,6 +44,8 @@ const App = () => {
           <Route path="/movies/watchlaterpage" element={<WatchLaterPage />} />
           <Route path="/movies/popular" element= {<Popular />} />
           <Route path="/alltime" element= {<Alltime />} />
+          <Route path="/register" element= {<Register />} />
+          <Route path="/login" element= {<LoginPage/>}/>
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={ <Navigate to="/" /> } />
           </Routes>
