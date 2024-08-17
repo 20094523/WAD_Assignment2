@@ -30,3 +30,28 @@ export const getMovies = async () => {
     });
     return response.json();
   };
+
+  //2 new API calls for extending mongo API.
+
+  export const getUsernames = async () => {
+    const response = await fetch('http://localhost:8080/api/users', {
+        headers: {
+            'Authorization': window.localStorage.getItem('token')
+        }
+    });
+
+    return response.json();
+};
+
+export const getMovieRuntime = async (movieId) => {
+  const response = await fetch(
+    `http://localhost:8080/api/movies/${movieId}/runtime`, 
+    {
+      headers: {
+        'Authorization': window.localStorage.getItem('token'), 
+      },
+    }
+  );
+  const data = await response.json();
+  return data.runtime; 
+};

@@ -4,30 +4,21 @@ Name: Dominik Martynski
 
 ## Features.
 
-A bullet-point list of the ADDITIONAL features you have implemented in the API **THAT WERE NOT IN THE LABS** (or modifications to existing features)
- 
- + Feature 1 
- + Feature 2 
- + Feature 3 
- + etc
+No new features.
 
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+Same setup as the first project. Must run the movies-api database at the same time as the react project.
 
 ## API Configuration
 
-Describe any configuration that needs to take place before running the API. For example, creating an `.env` file and what variables to put in it. Give an example of how this might be done.
-
-REMEMBER: DON'T PUT YOUR OWN USERNAMES/PASSWORDS/AUTH KEYS IN THE README OR ON GITHUB, just placeholders as indicated below:
-
+.env variables
 ______________________
-NODEENV=development
-PORT=8080
-HOST=
-mongoDB=YourMongoURL
-seedDb=true
-secret=YourJWTSecret
+(In main directory)
+REACT_APP_TMDB_KEY= YOUR KEY
+(In movies-api directory)
+MONGO_DB= YOUR KEY
+TMDB_KEY= SAME KEY AS IN MAIN
 ______________________
 
 ## API Design
@@ -37,17 +28,22 @@ Give an overview of your web API design, perhaps similar to the following:
 - /api/movies/{movieid} | GET | Gets a single movie 
 - /api/movies/{movieid}/reviews | GET | Get all reviews for movie 
 - /api/movies/{movieid}/reviews | POST | Create a new review for Movie 
+//  2 new API calls
+- /api/users | GET | gets users details.
+- /api/movies/{movieid}/runtime | GET | Get runtime of movie from database.
 
-If you have your API design on an online platform or graphic, please link to it (e.g. [Swaggerhub](https://app.swaggerhub.com/)).
+## Security and Authentication (40%)
 
-## Security and Authentication
+Login and Registration is set up. When you don't have a valid token, favourites and watchlist are protected routes. A logout button is present which removes your token from the website. (I think thats 55-69%)
 
-Give details of authentication/security implemented on the API (e.g. passport/sessions). Indicate which routes are protected.
-
-## Integrating with React App
+## Integrating with React App (30%)
 
 Describe how you integrated your React app with the API. List the views that use your Web API instead of the TMDB API. Describe any other updates to the React app from Assignment One.
 
+Added login, register and logout buttons to the header. All users usernames are displayed on the bottom of the homepage, like on old forums. 
+Login and Register work just how they did in the movies-api labs, so that counts as integration I think. 
+New page which lists movies from the database. (I think this should be baseline 40-54%)
+
 ## Independent learning (if relevant)
 
-Briefly explain any non-standard features developed for the app.   
+Nothing I can think of.

@@ -17,6 +17,8 @@ import Popular from "./pages/popular";
 import Alltime from "./pages/alltime";
 import LoginPage from "./pages/loginPage";
 import Register from "./pages/signUpPage";
+import ProtectedRoute from "./protectedRoute";
+import DataBaseMovies from "./pages/dataBaseMovies";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -35,14 +37,23 @@ const App = () => {
         <SiteHeader />
         <MoviesContextProvider>
         <Routes>
-          <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
+          <Route path="/movies/favorites" element={
+            <ProtectedRoute>
+              <FavoriteMoviesPage />
+            </ProtectedRoute>
+          } />
           <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
           <Route path="/movies/upcoming" element={<Upcoming />} />
           <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
           <Route path="/movies/:id" element={<MoviePage />} />
           <Route path="/movies/:id/recommended" element={<MovieRecommendations />} />
-          <Route path="/movies/watchlaterpage" element={<WatchLaterPage />} />
+          <Route path="/movies/watchlaterpage" element={
+            <ProtectedRoute>
+              <WatchLaterPage />
+            </ProtectedRoute>
+          } />
           <Route path="/movies/popular" element= {<Popular />} />
+          <Route path="/database" element= {<DataBaseMovies />} />
           <Route path="/alltime" element= {<Alltime />} />
           <Route path="/register" element= {<Register />} />
           <Route path="/login" element= {<LoginPage/>}/>
