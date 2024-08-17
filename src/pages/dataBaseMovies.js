@@ -12,7 +12,7 @@ const DataBaseMovies = () => {
     const movies = data.results;
     const moviesDisplay = (
         <div>
-            {movies.map(movie => { return <li key={movie.id}>{movie.id},{movie.title}<br /></li> })}
+            {movies.map(movie => { return <li key={movie.id}>{movie.id},{movie.title}, {movie.release_date}<br /></li> })}
         </div>
     )
     return <div><h2>Movies</h2>{moviesDisplay}</div>

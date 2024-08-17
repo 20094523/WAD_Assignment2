@@ -43,9 +43,9 @@ export const getMovies = async () => {
     return response.json();
 };
 
-export const getMovieRuntime = async (movieId) => {
+export const getMovieReleaseDate = async (movieId) => {
   const response = await fetch(
-    `http://localhost:8080/api/movies/${movieId}/runtime`, 
+    `http://localhost:8080/api/movies/${movieId}/release_date`, 
     {
       headers: {
         'Authorization': window.localStorage.getItem('token'), 
@@ -53,5 +53,5 @@ export const getMovieRuntime = async (movieId) => {
     }
   );
   const data = await response.json();
-  return data.runtime; 
+  return data.release_date; 
 };

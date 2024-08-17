@@ -11,16 +11,17 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { jwtDecode } from 'jwt-decode'; 
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
-const SiteHeader = ({ history }) => {
+const SiteHeader = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
-  
+
   const navigate = useNavigate();
 
   const menuOptions = [
@@ -30,7 +31,7 @@ const SiteHeader = ({ history }) => {
     { label: "Watchlater", path: "/movies/watchLaterPage" },
     { label: "Most Popular", path: "/movies/popular" },
     { label: "All time best", path: "/alltime" },
-    { label: "Database", path: "/database"},
+    { label: "Database", path: "/database" },
     { label: "Log In", path: "/login" },
     { label: "Register", path: "/register" },
     { label: "Logout", action: "logout" },  
@@ -42,12 +43,24 @@ const SiteHeader = ({ history }) => {
     } else {
       navigate(option.path, { replace: true });
     }
-    setAnchorEl(null); 
+    setAnchorEl(null);
   };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const token = window.localStorage.getItem('token');
+
+  let username = null;
+  if (token) {
+    try {
+      const decodedToken = jwtDecode(token); 
+      username = decodedToken.username; 
+    } catch (e) {
+      console.error('Token decoding failed:', e);
+    }
+  }
 
   return (
     <>
@@ -56,9 +69,17 @@ const SiteHeader = ({ history }) => {
           <Typography variant="h4" sx={{ flexGrow: 1 }}>
             TMDB Client
           </Typography>
+
+          {username && (
+            <Typography variant="h6" sx={{ flexGrow: 1 }}>
+              Hello, {username}!
+            </Typography>
+          )}
+
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             All you ever wanted to know about Movies!
           </Typography>
+
           {isMobile ? (
             <>
               <IconButton

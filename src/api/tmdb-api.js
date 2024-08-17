@@ -164,7 +164,3 @@ export const getUpcoming = (page = 1) => {
       throw error;
     });
   };
-
-  //2 new API calls extending TMDB
-
-  
